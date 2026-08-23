@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { redisClient } from "../services/redis";
+import { redisClient } from "../services/redis.ts";
 
 
 const shacache = new Map<string, string>();
