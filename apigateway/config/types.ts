@@ -1,9 +1,5 @@
-export enum MethodTypes {
-    GET,
-    POST,
-    PUT,
-    DELETE
-}
+export type MethodTypes = "GET" | "POST" | "PUT" | "DELETE"
+
 
 export enum LimiterType {
     SLIDINGWINDOW,
