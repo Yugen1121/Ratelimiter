@@ -26,7 +26,7 @@ class UsersModel implements UserModelInt {
     }
     async addUser(email: string, password: string, username: string): Promise<void> {
         return new Promise((resolve, reject) => {
-            const query = "INSERT INTO TABLE users(email, password, userName) values (?, ?, ?)";
+            const query = "INSERT INTO users(email, password, userName) values (?, ?, ?)";
             this.db.run(query, [email, password, username], (err) => {
                 if (err) reject(err);
                 else resolve();
