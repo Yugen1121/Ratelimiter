@@ -16,7 +16,7 @@ local allowed = 1
 
 if count < max then 
     redis.call("ZADD", key, now, now .. "--" .. math.random())
-    redis.call("PRXPIRE", key, windowM)
+    redis.call("PEXPIRE", key, windowMs)
 else
     allowed = 0
 end

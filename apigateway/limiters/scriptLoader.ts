@@ -1,5 +1,6 @@
 import fs from "fs";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from 'url';
 import { redisClient } from "../services/redis.ts";
 
 
@@ -7,7 +8,7 @@ const shacache = new Map<string, string>();
 
 async function loadScript(fileName: string): Promise<string>{
     if (shacache.has(fileName)) return shacache.get(fileName)!;
-    const scriptPath = path.join(__dirname, "scripts", fileName);
+    const scriptPath = path.join(fileURLToPath(dirname(import.meta.url)), "scripts", fileName);
     const script = fs.readFileSync(scriptPath, "utf-8")
 
     const sha = await redisClient.scriptLoad(script)
