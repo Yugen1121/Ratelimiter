@@ -1,5 +1,3 @@
-import { error } from "node:console"
-
 export class AppError extends Error{
     constructor(
         message: string, 
