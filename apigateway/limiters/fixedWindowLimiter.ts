@@ -2,7 +2,7 @@ import { runScript } from "./scriptLoader";
 import { LimiterResult, RateLimiter } from "./types";
 
 
-const fixedWindowLimiter: RateLimiter = {
+export const fixedWindowLimiter: RateLimiter = {
     async check(keys, windowMs, max): Promise<LimiterResult> {
         const [allowed, count, ttl] = await runScript("fixedWindow.lua",
             keys,

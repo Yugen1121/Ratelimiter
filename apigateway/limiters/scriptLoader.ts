@@ -24,7 +24,7 @@ export async function runScript(
 ){
     const sha = await loadScript(filename)
     try{
-        return await redisClient.evalsha(
+        return await redisClient.evalSha(
             sha,
             {
                 keys,
@@ -34,8 +34,8 @@ export async function runScript(
     }
     catch(error: any){
         if (error?.message?.includes("NOSCRIPT")){
-            const sha2 = loadScript(filename);
-            return await redisClient.evalsha(
+            const sha2 = await loadScript(filename);
+            return await redisClient.evalSha(
                 sha2,
                 {
                     arguments: args.map(String)

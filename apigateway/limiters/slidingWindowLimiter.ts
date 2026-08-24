@@ -1,7 +1,7 @@
 import { RateLimiter, LimiterResult } from "./types";
 import { runScript } from "./scriptLoader";
 
-const slidingWindowLimiter: RateLimiter = {
+export const slidingWindowLimiter: RateLimiter = {
     async check(keys , windowMs, max): Promise<LimiterResult>{
         const now = Date.now();
         const [allowed, count] = await runScript("slidingwindow.lua",
