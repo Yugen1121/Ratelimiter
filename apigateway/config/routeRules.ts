@@ -2,7 +2,7 @@ import { match } from "path-to-regexp"
 import { LimiterType, MethodTypes, RouteRule } from "./types"
 
 const routeRules: RouteRule[] = [
-    { method: "POST", route: "/auth/login", limiter: LimiterType.SLIDINGWINDOW, windowMs: 60_000, limit: 4, sublimit: 1000},
+    { method: "POST", route: "/auth/login", limiter: LimiterType.SLIDINGWINDOW, windowMs: 60_000, limit: 4, sublimit: 100},
 ]
 
 export function findRule(method: string, route: string): RouteRule | undefined {
