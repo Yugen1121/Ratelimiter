@@ -5,7 +5,7 @@ import { Server, ServerResponse, type IncomingMessage } from 'node:http';
 
 
 const gatewayServers = [
-    "http://127.0.0.1:5432",
+    "http://127.0.0.1:5435",
     "http://127.0.0.1:5433",
     "http://127.0.0.1:5434",
 ];
@@ -36,7 +36,6 @@ app.use((req: Request, res: Response, next)=>{
     const server = getServer();
 
     req.headers["target-server"] = server;
-    console.log(1)
     const proxy = createProxyMiddleware({
         target: apiGateway,
         changeOrigin: true,
@@ -52,7 +51,6 @@ app.use((req: Request, res: Response, next)=>{
             }
         }
     })
-    console.log(2)
     return proxy(req, res, next)
 })
 

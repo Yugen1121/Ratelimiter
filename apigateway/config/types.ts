@@ -10,5 +10,6 @@ export interface RouteRule{
     method: MethodTypes,
     limiter: LimiterType,
     limit: number,
-    windowMs: number
+    windowMs: number,
+    sublimit: number
 }

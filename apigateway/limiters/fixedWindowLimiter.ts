@@ -3,10 +3,10 @@ import { LimiterResult, RateLimiter } from "./types";
 
 
 export const fixedWindowLimiter: RateLimiter = {
-    async check(keys, windowMs, max): Promise<LimiterResult> {
+    async check(keys, windowMs, max, submax): Promise<LimiterResult> {
         const [allowed, count, ttl] = await runScript("fixedWindow.lua",
             keys,
-            [windowMs, max]
+            [windowMs, max, submax]
         ) as [number, number, number];
         return {
             allowed: allowed === 1,
